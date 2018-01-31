@@ -3,6 +3,8 @@
 This script will free nodes from a project after
 a specific amount of time.
 
+It should be run on BMI machine.
+
 You can find more information including
 config file and status file format in
 README file.
