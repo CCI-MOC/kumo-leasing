@@ -3,12 +3,8 @@
 This script will free nodes from a project after
 a specific amount of time.
 
-<<<<<<< HEAD
 It should be run on BMI machine. And will talk
 with HIL machine through the network.
-=======
-It should be run on BMI machine.
->>>>>>> 007032aa4c2fb04d5b68030d81eeac307471bbd7
 
 You can find more information including
 config file and status file format in
