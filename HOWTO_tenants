@@ -1,9 +1,23 @@
+*************** NOTE *********************
 Users of KUMO platform should know that in every 6 hours their nodes will be revoked by the system. 
 If you need more time than 6 hours, you need to talk with the admin and ask him to give you more time.
 
-You are provided a reconnection script and a config file (connect_node.sh and reconnect.cfg).
-These two files can help you to reaquire your previous nodes and reprovision them automatically. 
+If your node is revoked:
+You are provided a reconnection script and a config file (connect_node.sh and reconnect.cfg). 
+These two files can help you to re-acquire your previous nodes and reprovision them automatically. 
 
-run ./connect_node.sh your_project_name your_node_name. you should put the reconnect.cfg file in
-the same directory as connect_node.sh. The config should contain BMI server's IP address.
+************* To get your node back and reprovisioned ************************
 
+1- Check reconnect.cfg file to be sure if it contains the BMI ip address.
+the format should be:
+
+server BMI_IP_Address
+
+(Chnage only BMI_IP_Address part.)
+
+2- Put reconnect.cfg file in the same directory as connect_node.sh file.
+3- run:
+./connect_node.sh your_project_name your_node_name 
+
+your_project_name is the project name you have created in HIL.
+your_node_name should be dell-X which X is some number between 1 and 16. You should have this number from HIL. 
