@@ -14,14 +14,16 @@ either natively or as a tagged network. Making it tagged would require you to
 do some additional configuration on your node. Recommended way to do is to connect em2 to `internet` natively.
 If you know what you are doing, you can ignore this section.
 
-* If you require a public IP address for your node, talk to Naved/Rado.
+* If you require a public IP address for your node, email kumo@lists.massopen.cloud
 
 ## Using HIL
 
-1. Logon to the kumo-hil-client (available over Internet).
-  `ssh username@kumo-hil.massopen.cloud`
+HIL allows users to reserve nodes and connect them via isolated networks.
 
-2. Export your HIL credentials that an admin should have given you.
+1. Logon to the kumo-hil-client (available over Internet).
+  `ssh username@kumo-hil.massopen.cloud` (Helpful tips about SSH available in the last section of this document)
+
+2. Export your HIL credentials that an admin should have given you. In bash, do this
 
 ```
 export HIL_USERNAME=username
@@ -30,12 +32,19 @@ export HIL_ENDPOINT='http://192.168.100.210:80'
 ```
 
 You could put these in your bashrc so they are automatically in your environment
-when you login.
+when you login (you could figure out it's equivalent if you are using a different shell).
 
 3. Basic HIL commands:
 
 * `hil list_project_nodes <project-name>`
     This will list all the nodes that your project has access to.
+
+* `hil project_connect_node <project-name> <node-name>`.
+    This will add the node to your project.
+
+* `hil project_detach_node <project-name> <node-name>`.
+    This will remove the node from your project. Before running this command, make
+    sure that you remove all networks first.
 
 * `hil show_node <node-name>`
     This will show you the information about your node.
@@ -55,18 +64,26 @@ when you login.
 * `hil node_power_off <node-name>`.
     to power off a node.
 
+For more information about HIL, checkout the [HIL Repo](github.com/cci-moc/hil)
+
 
 ## Using BMI
 
-1. Logon to the BMI machine (available only through the HIL client).
+BMI allows you to provision software on your nodes. Once your nodes are reserved using HIL
+you can use BMI to pxe boot your node.
+
+Note: BMI uses diskless provisioing, so your changes are not saved to the local disk. Your disk is
+saved in ceph that BMI automatically manages.
+
+1. Logon to the BMI machine via HIL client.
     `ssh username@kumo-bmi-no-seccloud.infra.massopen.cloud`
-    or use it's ip address which is 192.168.100.142
+    or use its ip address which is 192.168.100.142
 
 2. Once logged in, export your HIL credentials explained above. In addition to that
-do this:
+set the BMI_CONFIG variable. In bash, do this:
     `export BMI_CONFIG=/etc/bmi/bmiconfig.cfg`
 
-Test bmi works by running `bmi db ls` command.
+Test that bmi works by running `bmi db ls` command.
 
 
 3. Run this command to see a list of available images. The project name is the same name as in HIL.
@@ -87,11 +104,19 @@ Run this command:
     * The command should return `success` within 5-10 seconds.
 
 
-If you had already provisioned a node using bmi, and just want to reconnect your image
-to your node, run this script available in your path.
-reconnect.sh <project-name> <node-name>
+If you had already provisioned a node using bmi, and just want to re-reserve your node then
+do the following:
 
-    This command will only work if you already had that node provisioned using bmi.
+* put the node in your project using HIL.
+`hil project_connect_node <project-name> <node-name>`
+
+* connect `em1` of your node to the bmi provisioning network.
+`hil node_connect_network <node-name> em1 bmi-provision-net-no-seccloud vlan/native`
+
+* run this script available in your path.
+ `reconnect.sh <project-name> <node-name>`
+
+This command will only work if you already had that node provisioned using bmi.
 
 
 5. Once you provision your node, power cycle your node using HIL and it should boot
@@ -112,10 +137,14 @@ You can now ssh to your nodes using those IP addresses.
     * This command should return `success` within 5-10 seconds. This will **delete** your
     image.
 
+For more information about BMI, checkout the [BMI repo](github.com/cci-moc/ims)
+
 
 ## How to SSH
 
-This is intented for linux users. Windows user can use putty to ssh.
+This section can be skipped if you already know how to ssh like a pro.
+
+This is intented to simplify ssh for linux users. Windows user can use putty to ssh.
 
 * Create a `config` file in your `.ssh` directory, and edit & paste the following:
 
