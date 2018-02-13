@@ -37,7 +37,10 @@ when you login (you could figure out it's equivalent if you are using a differen
 3. Basic HIL commands:
 
 * `hil list_project_nodes <project-name>`
-    This will list all the nodes that your project has access to.
+    This will list all the nodes that are currently added to your project.
+
+* `hil list_nodes free`
+   will list all nodes that are available.
 
 * `hil project_connect_node <project-name> <node-name>`.
     This will add the node to your project.
