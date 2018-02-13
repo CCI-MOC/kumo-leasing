@@ -1,5 +1,5 @@
 #!/bin/bash
-#USAGE: ./reconnect <project-name-as-in-hil> <node-name-as-in-hil>
+#USAGE: ./connect_node.sh <project-name-as-in-hil> <node-name-as-in-hil>
 
 dir=${0%/connect_node.sh}
 server=$(grep "server" "${dir}/conf.cfg" | awk '{print $2}')
