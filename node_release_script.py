@@ -3,7 +3,10 @@
 This script will free nodes from a project after
 a specific amount of time.
 
-It should be run on BMI client machine.
+
+It should run on the BMI client machine.
+It will talk with HIL through the network.
+
 
 You can find more information including
 config file and status file format in

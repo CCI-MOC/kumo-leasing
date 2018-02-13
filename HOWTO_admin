@@ -1,0 +1,21 @@
+## Running Leasing script
+
+* Setup a cron job to run the release script.
+* node_release_script.sh, leasing.cfg and leasing files should be
+in the same directory.
+* you need to add names of the nodes which you want the script to take care of to leasing.cfg file.
+
+
+## Files description
+
+* leasing file is the log file that script will update periodically. 
+* node_release_script.sh is the script to release nodes.
+* leasing.cfg contains main configurations. 
+
+## Increasing time for tenants
+
+* leasing.cfg file containes threshold variable. Based on cron job's iteration duration, threshold determines the release time. For a period of 6 hours, it is recommended to set the threshold to 36 and cron job to 10 minutes.
+
+* If you want to change the release time or give more time to some users you have to change leasing file.
+** The last number in each line of "leasing" file shows node's allocation period (i.e., the time that node has been allocated to the project.). by reducing this value, you can give more time to the users (if this value gets to be equal to the thresold value, the node will be released.)
+
