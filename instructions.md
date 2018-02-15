@@ -117,7 +117,9 @@ do the following:
 `hil node_connect_network <node-name> em1 bmi-provision-net-no-seccloud vlan/native`
 
 * run this script available in your path.
+
  `connect_node.sh <project-name> <node-name>`
+
 
 This command will only work if you already had that node provisioned using bmi.
 
