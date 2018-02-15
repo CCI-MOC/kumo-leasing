@@ -1,9 +1,11 @@
 ## Running Leasing script
 
 * Setup a cron job to run the release script.
-* node_release_script.sh, leasing.cfg and leasing files should be
-in the same directory.
-* you need to add names of the nodes which you want the script to take care of to leasing.cfg file.
+* node_release.sh and node_release_script.py should be in the same directory.
+* leasing.cfg should be in /etc.
+* leasing.cfg should point to the location of "leasing" file.
+* you need to add names of the nodes which you want the script to take care of to /etc/leasing.cfg and leasing files.
+for leasing file, it should be "node_name project_name/free_pool 0" for the first time.
 
 
 ## Files description
