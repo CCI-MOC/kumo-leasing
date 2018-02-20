@@ -7,12 +7,7 @@ if you want more time.
 
 * Nodes **will be** automatically powered down and taken away from your project once the lease expires.
 
-* For provisioning, we connect `em1` to the bmi provisioning network natively.
-
-* To connect your node to internet, connect any of your nics to the `internet` network
-either natively or as a tagged network. Making it tagged would require you to
-do some additional configuration on your node. Recommended way to do is to connect em2 to `internet` natively.
-If you know what you are doing, you can ignore this section.
+* For provisioning, we connect `em1` to the bmi provisioning network natively (happens automatically)
 
 * If you require a public IP address for your node, email kumo@lists.massopen.cloud
 
@@ -172,3 +167,37 @@ Host kumobmi
 * Now from a local terminal, type `ssh kumo` to get to the kumo-hil-client.
 
 * From another local terminal, type `ssh kumobmi` to get to kumo-bmi machine.
+
+## How to connect your nodes to internet
+
+1. Connect any of your nics to the `internet` network either natively or as a
+tagged network. Recommended way to do is to connect em2 to `internet` natively.
+
+2. Determine the mac address of the nic you have connected by running
+`hil show_node <node-name>` which will print the names and mac addresses of all
+NICs.
+
+3. Run `ip a` on your node which will list out all the available interfaces and
+their mac addresses. Interface `em2` in HIL is called `em2` in RHEL7 images, and
+`eth12` in CentOS6 images. Though this may change in other images.
+
+4. Create a network configuration file in `/etc/sysconfig/network-scripts/`.
+Change the DEVICE to the name of your NIC.
+```
+DEVICE=em2
+BOOTPROTO=dhcp
+ONBOOT=yes
+DEFROUTE=yes
+```
+and save it as ifcfg-em2 (basically, ifcfg-<interface-name>).
+
+then run `ifup em2` and your interface should get the network configuration from a
+DHCP server and you should have access to internet.
+
+If you connect to the internet network as tagged, then follow these
+[instructions](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-configure_802_1q_vlan_tagging_using_the_command_line) to configure your
+interface.
+
+
+
+
