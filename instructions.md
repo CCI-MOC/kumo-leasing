@@ -111,6 +111,8 @@ do the following:
 * connect `em1` of your node to the bmi provisioning network.
 `hil node_connect_network <node-name> em1 bmi-provision-net-no-seccloud vlan/native`
 
+* reconnect any other networks that you had (for eg, the internet vlan)
+
 * run this script available in your path.
 
  `connect_node.sh <project-name> <node-name>`
@@ -199,5 +201,14 @@ If you connect to the internet network as tagged, then follow these
 interface.
 
 
+## How to connect to the local RHEL server for packages.
 
+1. Connect your node to the internet VLAN (172.16.XX.XX, duh).
+
+2. Download this file `wget 172.16.10.2/repos/rhel7local.repo`
+
+3. Replace the ip in it with `172.16.10.2`. If you are using vim, you could do
+`:%s/10.13.96.252/172.16.10.2/g`
+
+4. Then drop that file in `/etc/yum.repos.d/`. And you should be all set.
 
