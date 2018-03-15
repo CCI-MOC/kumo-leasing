@@ -127,7 +127,7 @@ into your image in 3-4 minutes.
 For dell-XX node, the ip address is 10.10.10.1XX
 eg; dell-4 = 10.10.10.104, dell=12 = 10.10.10.112
 
-You can now ssh to your nodes using those IP addresses.
+You can now ssh to your nodes using those IP addresses. Please login as the **root** user.
 
 
 6. To deprovision a node, run this:
