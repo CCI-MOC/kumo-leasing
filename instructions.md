@@ -153,7 +153,7 @@ This is intented to simplify ssh for linux users. Windows user can use putty to 
 ```
 Host kumo
     User <username>
-    Hostname kumo-hil.massopen.cloud
+    Hostname kumo-hil-client.infra.massopen.cloud
     ForwardAgent yes
 
 Host kumobmi
