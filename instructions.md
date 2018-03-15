@@ -16,7 +16,7 @@ if you want more time.
 HIL allows users to reserve nodes and connect them via isolated networks.
 
 1. Logon to the kumo-hil-client (available over Internet).
-  `ssh username@kumo-hil.massopen.cloud` (Helpful tips about SSH available in the last section of this document)
+  `ssh username@kumo-hil-client.infra.massopen.cloud` (Helpful tips about SSH available in the last section of this document)
 
 2. Export your HIL credentials that an admin should have given you. In bash, do this
 
