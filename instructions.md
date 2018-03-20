@@ -90,7 +90,7 @@ Test that bmi works by running `bmi db ls` command.
 
 4. If this is the first time you got a node, and you want to provision it with an OS using BMI.
 Run this command:
-    `bmi provision <project-name> <node-name> <image-name> bmi-provision-net-no-seccloud em1`
+    `bmi pro <project-name> <node-name> <image-name> bmi-provision-net-no-seccloud em1`
 
 
     * Here bmi-provision-net-no-seccloud is the name of the provisioning network,
