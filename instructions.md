@@ -62,7 +62,7 @@ when you login (you could figure out it's equivalent if you are using a differen
 * `hil node_power_off <node-name>`.
     to power off a node.
 
-For more information about HIL, checkout the [HIL Repo](github.com/cci-moc/hil)
+For more information about HIL, checkout the [HIL Repo](http://github.com/cci-moc/hil)
 
 
 ## Using BMI
@@ -139,7 +139,7 @@ You can now ssh to your nodes using those IP addresses. Please login as the **ro
     * This command should return `success` within 5-10 seconds. This will **delete** your
     image.
 
-For more information about BMI, checkout the [BMI repo](github.com/cci-moc/ims)
+For more information about BMI, checkout the [BMI repo](https://github.com/cci-moc/ims)
 
 
 ## How to SSH
